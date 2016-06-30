@@ -1,0 +1,24 @@
+extends layouts/default
+
+block content
+  h2 List of Projects
+
+  each project in projects
+    h2
+      a(href="/projects/#{project._id}") #{project.name}
+    .ui.card.fluid
+      .text.content !{markdown(project.description)}
+
+  h3 Add Project
+  form.ui.form(method="POST", action="/projects")
+    .field
+      label Name
+      input(type="text", name="name")
+    .field
+      label Description
+      textarea(name="description")
+
+    .field
+      button.ui.primary.right.floated.huge.button(type="submit")
+        | Create This Project
+        i.icon.right.chevron

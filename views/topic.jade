@@ -1,0 +1,39 @@
+extends layouts/default
+
+block content
+  h2 #{topic.title}
+
+  .ui.card.fluid
+    .content
+      p #{topic.content}
+
+  h3 Comments
+  .ui.comments
+    for comment in comments
+      .ui.fluid.comment
+        a.avatar(href="/users/#{user.slug}")
+          img(src="http://semantic-ui.com/images/avatar/small/joe.jpg")
+        .content
+          a.author(href="/users/#{user.slug}") @#{user.username}
+          .metadata #{comment.created}
+          .text
+            .ui.star.rating(data-max-rating="5")
+            | !{markdown(comment.content)}
+          .actions
+            a.reply reply
+
+  if (user)
+    h3 Add Comment
+    form.ui.form(method="POST", action="/comments")
+      input(type="hidden", name="topic", value="#{topic._id}")
+      input(type="hidden", name="user", value="#{user._id}")
+      .field
+        label Content
+        textarea(name="content")
+      .field
+        button.ui.primary.right.floated.huge.button(type="submit")
+          | Add This Comment
+          i.icon.right.chevron
+
+  script.
+    $('.ui.slider').slider();

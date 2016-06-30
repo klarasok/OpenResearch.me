@@ -1,0 +1,35 @@
+extends layouts/default
+
+block content
+  h2 #{project.name}
+  .ui.card.fluid
+    .text.content !{markdown(project.description)}
+
+    .extra.content
+      .ui.toggle.checkbox
+        input(type="checkbox", name="status", value="open")
+        label Comments
+
+  h3 Topics
+  .ui.cards
+    for topic in topics
+      .ui.card.fluid
+        .text.content
+          h4.header
+            a(href="/topics/#{topic._id}") #{topic.title}
+          p !{markdown(topic.content)}
+
+  h3 Add Topic
+  form.ui.form(method="POST", action="/topics")
+    input(type="hidden", name="project", value="#{project._id}")
+    .field
+      label Title
+      input(type="text", name="title")
+    .field
+      label Content
+      textarea(name="content")
+        
+    .field
+      button.ui.primary.right.floated.huge.button(type="submit")
+        | Add This Post
+        i.icon.right.chevron

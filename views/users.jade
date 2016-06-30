@@ -1,0 +1,24 @@
+extends layouts/default
+
+block content
+  h2 List of Users
+
+  each user in users
+    a.ui.card.fluid.link(href="/users/#{user._id}")
+      .content
+        h3.header #{user.username}
+
+  form.ui.form(method="POST", action="/users")
+    .field
+      input(type="text", name="username")
+    .field
+      input(type="text", name="email")
+    .field
+      input(type="password", name="password")
+        
+    .field
+      button.ui.button.primary(type="submit") Get Started
+    
+    a.ui.button
+      i.icon.twitter
+      | sign in with Twitter
