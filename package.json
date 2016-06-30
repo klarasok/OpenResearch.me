@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "maki": "git://github.com/martindale/maki#maki.io",
     "maki-passport-local": "0.0.4",
     "moment": "^2.13.0"
   }
