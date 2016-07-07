@@ -112,4 +112,29 @@ openresearch.define('File', {
   }
 });
 
+openresearch.define('Index', {
+  name: 'Index',
+  template: 'index',
+  handle: config.service.name + ', ' + config.service.mission,
+  description: config.service.description,
+  routes: {
+    query: '/'
+  },
+  public: false,
+  static: true,
+  internal: true,
+  requires: {
+    'Project': {
+      filter: function() {
+        return {};
+      }
+    },
+    'Topic': {
+      filter: function() {
+        return {};
+      }
+    }
+  }
+});
+
 openresearch.start();

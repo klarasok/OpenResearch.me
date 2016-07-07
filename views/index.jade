@@ -11,18 +11,13 @@ block masthead
       i.right.chevron.icon
 
 block content
-  h2.ui.header Current project: Blockchain
-  p Can blockchain lead to new trust models?
+  h2.ui.header Current project: #{projects[0].name}
+  p !{projects[0].description}
 
-  .ui.three.column.centered.stackable.grid.container
-    .three.wide.column
-      i.icon.chart
-      h3 Connect
-    .three.wide.column
-      i.icon.chart
-      h3 Connect
-    .three.wide.column
-      i.icon.chart
-      h3 Connect
-     
-  
+  .ui.three.cards
+    - var topic = topics.slice(0, 3);
+    for topic in topics
+      .ui.card
+        .content
+          a.header(href="/topics/#{topic._id}") #{topic.title}
+    
