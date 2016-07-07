@@ -14,10 +14,10 @@ block content
   .ui.comments
     for comment in comments
       .ui.fluid.comment
-        a.avatar(href="/people/#{comment.user.slug}")
+        a.avatar(href="/people/#{comment.author.slug}")
           img(src="http://semantic-ui.com/images/avatar/small/joe.jpg")
         .content
-          a.author(href="/people/#{comment.user.slug}") @#{comment.user.username}
+          a.author(href="/people/#{comment.author.slug}") @#{comment.author.username}
           .metadata #{comment.created}
           .text
             .ui.star.rating(data-max-rating="5")
@@ -29,7 +29,7 @@ block content
     h3 Add Comment
     form.ui.form(method="POST", action="/comments")
       input(type="hidden", name="topic", value="#{topic._id}")
-      input(type="hidden", name="person", value="#{user._id}")
+      input(type="hidden", name="author", value="#{user._id}")
       .field
         label Content
         textarea(name="content")

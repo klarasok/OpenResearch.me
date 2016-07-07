@@ -74,7 +74,7 @@ openresearch.define('Comment', {
     created: { type: Date , default: Date.now },
     content: { type: String },
     topic: { type: String },
-    person: { type: String },
+    author: { type: String },
   },
   handlers: {
     html: {
