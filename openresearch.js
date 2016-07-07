@@ -8,10 +8,10 @@ var Passport = require('maki-passport-local');
 //var LinkedIn = require('maki-passport-linkedin');
 
 var passport = new Passport({
-  resource: 'User'
+  resource: 'Person'
 });
 /*var twitter = new Twitter({
-  resource: 'User'
+  resource: 'Person'
 });*/
 
 openresearch.use(passport);
@@ -94,7 +94,7 @@ openresearch.define('Reaction', {
   }
 });
 
-openresearch.define('User', {
+openresearch.define('Person', {
   icon: 'user',
   attributes: {
     slug: { type: String },
