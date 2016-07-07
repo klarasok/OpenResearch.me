@@ -97,7 +97,7 @@ openresearch.define('Reaction', {
 openresearch.define('User', {
   icon: 'user',
   attributes: {
-    
+    slug: { type: String },
     username: { type: String , required: true , slug: true },
     email: { type: String },
     role: { type: String , enum: ['user', 'admin'], default: 'user' }

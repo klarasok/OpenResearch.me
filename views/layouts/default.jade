@@ -65,6 +65,11 @@ html.no-js
                 if (resource.options.icon)
                   i.icon(class="#{resource.options.icon}")
                 | #{resource.names.handle}
+          .right.menu
+            if (!user)
+              a.item(href="/sessions") Login
+            else
+              a.item(href="/users/#{user.slug}") #{user.username}
       .ui.vertical.inverted.sidebar.right.large.menu
         .ui.center.aligned.inverted.header
           a(href="/")
@@ -79,6 +84,10 @@ html.no-js
               if (resource.options.icon)
                 i.icon(class="#{resource.options.icon}")
               | #{resource.names.handle}
+        if (!user)
+          a.item(href="/sessions") Login
+        else
+          a.item(href="/users/#{user.slug}") #{user.username}
               
       .pusher
         .ui.inverted.vertical.masthead.segment
@@ -93,8 +102,13 @@ html.no-js
                     if (resource.options.icon)
                       i.icon(class="#{resource.options.icon}")
                     | #{resource.names.handle}
-              a.right.toc.item
-                i.sidebar.icon
+              .right.menu
+                if (!user)
+                  a.item(href="/sessions") Login
+                else
+                  a.item(href="/users/#{user.slug}") #{user.username}
+                a.toc.item
+                  i.sidebar.icon
             .ui.text.container
               block masthead
               
