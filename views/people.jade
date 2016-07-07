@@ -1,12 +1,12 @@
 extends layouts/default
 
 block content
-  h2 List of Users
+  h2 List of People
 
-  each user in users
-    a.ui.card.fluid.link(href="/users/#{user._id}")
+  each person in people
+    a.ui.card.fluid.link(href="/people/#{person._id}")
       .content
-        h3.header #{user.username}
+        h3.header #{person.username}
 
   h3 Sign Up
   form.ui.form(method="POST", action="/users")
@@ -21,8 +21,9 @@ block content
       input(type="password", name="password")
         
     .field
-      button.ui.button.primary(type="submit") Get Started
+      button.ui.right.floated.primary.button(type="submit") Sign Up
+        i.icon.right.chevron
     
-    a.ui.button
+    a.ui.button(href="/sessions?method=create&params=['twitter']")
       i.icon.twitter
       | sign in with Twitter
