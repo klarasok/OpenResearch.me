@@ -8,12 +8,16 @@ block content
       .content
         h3.header #{user.username}
 
+  h3 Sign Up
   form.ui.form(method="POST", action="/users")
     .field
+      label(for="username") Username
       input(type="text", name="username")
     .field
+      label(for="username") Email
       input(type="text", name="email")
     .field
+      label(for="username") Password
       input(type="password", name="password")
         
     .field
