@@ -22,7 +22,7 @@ openresearch.define('Project', {
   attributes: {
     name: { type: String , max: 240 },
     description: { type: String },
-    author: { type: String },
+    author: { type: String , ref: 'Person' },
     status: { type: String , enum: ['open', 'closed'] , default: 'open' },
     created: { type: Date , default: Date.now },
     /* costs: {
@@ -51,7 +51,7 @@ openresearch.define('Topic', {
   attributes: {
     title: { type: String , max: 240 },
     content: { type: String },
-    author: { type: String },
+    author: { type: String , ref: 'Person' },
     status: { type: String , enum: ['open', 'closed'] , default: 'open' },
     created: { type: Date , default: Date.now },
     project: { type: String },
@@ -62,7 +62,7 @@ openresearch.define('Topic', {
         var topic = this;
         return { topic: topic._id }
       },
-      populate: 'person'
+      populate: 'author'
     }
   }
 });
@@ -74,7 +74,7 @@ openresearch.define('Comment', {
     created: { type: Date , default: Date.now },
     content: { type: String },
     topic: { type: String },
-    author: { type: String },
+    author: { type: String , ref: 'Person' },
   },
   handlers: {
     html: {
