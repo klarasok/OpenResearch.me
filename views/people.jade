@@ -4,7 +4,7 @@ block content
   h2 List of People
 
   each person in people
-    a.ui.card.fluid.link(href="/people/#{person._id}")
+    a.ui.card.fluid.link(href="/people/#{person.slug}")
       .content
         h3.header #{person.username}
 
