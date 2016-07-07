@@ -8,13 +8,16 @@ block content
       p #{topic.content}
 
   h3 Comments
+  if (!comments || !comments.length)
+    h4 No comments have yet been made!  Why don't you add your thoughts?
+  
   .ui.comments
     for comment in comments
       .ui.fluid.comment
-        a.avatar(href="/users/#{user.slug}")
+        a.avatar(href="/people/#{comment.user.slug}")
           img(src="http://semantic-ui.com/images/avatar/small/joe.jpg")
         .content
-          a.author(href="/users/#{user.slug}") @#{user.username}
+          a.author(href="/people/#{comment.user.slug}") @#{comment.user.username}
           .metadata #{comment.created}
           .text
             .ui.star.rating(data-max-rating="5")
@@ -26,7 +29,7 @@ block content
     h3 Add Comment
     form.ui.form(method="POST", action="/comments")
       input(type="hidden", name="topic", value="#{topic._id}")
-      input(type="hidden", name="user", value="#{user._id}")
+      input(type="hidden", name="person", value="#{user._id}")
       .field
         label Content
         textarea(name="content")
@@ -34,6 +37,11 @@ block content
         button.ui.primary.right.floated.huge.button(type="submit")
           | Add This Comment
           i.icon.right.chevron
+  else
+    p
+      a(href="/users#create") Sign in
+      |  to add a comment.
+      
 
   script.
     $('.ui.slider').slider();

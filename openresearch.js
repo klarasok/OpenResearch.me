@@ -62,7 +62,7 @@ openresearch.define('Topic', {
         var topic = this;
         return { topic: topic._id }
       },
-      populate: 'user'
+      populate: 'person'
     }
   }
 });
@@ -74,7 +74,7 @@ openresearch.define('Comment', {
     created: { type: Date , default: Date.now },
     content: { type: String },
     topic: { type: String },
-    user: { type: String },
+    person: { type: String },
   },
   handlers: {
     html: {

@@ -69,7 +69,7 @@ html.no-js
             if (!user)
               a.item(href="/sessions") Login
             else
-              a.item(href="/users/#{user.slug}") #{user.username}
+              a.item(href="/people/#{user.slug}") #{user.username}
       .ui.vertical.inverted.sidebar.right.large.menu
         .ui.center.aligned.inverted.header
           a(href="/")
@@ -87,7 +87,7 @@ html.no-js
         if (!user)
           a.item(href="/sessions") Login
         else
-          a.item(href="/users/#{user.slug}") #{user.username}
+          a.item(href="/people/#{user.slug}") #{user.username}
               
       .pusher
         .ui.inverted.vertical.masthead.segment
@@ -106,7 +106,7 @@ html.no-js
                 if (!user)
                   a.item(href="/sessions") Login
                 else
-                  a.item(href="/users/#{user.slug}") #{user.username}
+                  a.item(href="/people/#{user.slug}") #{user.username}
                 a.toc.item
                   i.sidebar.icon
             .ui.text.container
